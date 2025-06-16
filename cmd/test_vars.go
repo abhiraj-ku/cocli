@@ -22,11 +22,11 @@ var (
 	invalidCots = comid.MustHexDecode(nil, "a2028006a100f6")
 	// note: embedded CoSWIDs are not validated {0: h'5C57E8F446CD421B91C908CF93E13CFC', 1: [505(h'deadbeef')]}
 	testCorimValid = comid.MustHexDecode(nil,
-		"a200505c57e8f446cd421b91c908cf93e13cfc0181d901f944deadbeef",
+		"d901f5a200505c57e8f446cd421b91c908cf93e13cfc0181d901f944deadbeef",
 	)
 	// {0: h'5C57E8F446CD421B91C908CF93E13CFC'}
 	testCorimInvalid = comid.MustHexDecode(nil,
-		"a100505c57e8f446cd421b91c908cf93e13cfc",
+		"d901f5a100505c57e8f446cd421b91c908cf93e13cfc",
 	)
 	testMetaInvalid = []byte("{}")
 	testMetaValid   = []byte(`{
