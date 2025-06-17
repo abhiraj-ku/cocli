@@ -91,7 +91,7 @@ func Test_CorimSignCmd_bad_unsigned_corim(t *testing.T) {
 	require.NoError(t, err)
 
 	err = cmd.Execute()
-	assert.EqualError(t, err, "error decoding unsigned CoRIM from bad.txt: expected map (CBOR Major Type 5), found Major Type 3")
+	assert.EqualError(t, err, "error decoding unsigned CoRIM from bad.txt: did not see unsigned CoRIM tag")
 }
 
 func Test_CorimSignCmd_invalid_unsigned_corim(t *testing.T) {

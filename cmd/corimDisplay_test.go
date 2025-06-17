@@ -13,6 +13,7 @@ import (
 
 // Define your truncated CBOR payload
 var truncatedCorim = []byte{
+	0xD9, 0x01, 0xF5,   // tag(501) [unsigned-corim-map]
 	0xA1,               // CBOR map with 1 key
 	0x01,               // Key = 1
 	0x65,               // Value: string of length 5
@@ -68,7 +69,7 @@ func Test_CorimDisplayCmd_bad_signed_corim(t *testing.T) {
 	require.NoError(t, err)
 
 	err = cmd.Execute()
-	assert.EqualError(t, err, "error decoding CoRIM (signed or unsigned) from bad.txt: expected map (CBOR Major Type 5), found Major Type 3")
+	assert.EqualError(t, err, "error decoding CoRIM (signed or unsigned) from bad.txt: did not see unsigned CoRIM tag")
 }
 
 func Test_CorimDisplayCmd_invalid_signed_corim_Truncated(t *testing.T) {

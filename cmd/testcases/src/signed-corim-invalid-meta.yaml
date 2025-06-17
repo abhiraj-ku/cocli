@@ -1,13 +1,15 @@
 ---
-0:
-  0: ACME Ltd signing key
-  1:
-    tag: 32
-    value: https://acme.example
-1:
+tag: 501
+value:
   0:
-    tag: 1
-    value: 1640908800
+    0: ACME Ltd signing key
+    1:
+      tag: 32
+      value: https://acme.example
   1:
-    tag: 1
-    value: 1767139200
+    0:
+      tag: 1
+      value: 1640908800
+    1:
+      tag: 1
+      value: 1767139200
