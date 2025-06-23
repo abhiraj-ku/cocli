@@ -4,7 +4,6 @@
 package cmd
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -134,31 +133,23 @@ func display(corimFile string, showTags bool) error {
 // displayTags processes and displays embedded tags within a CoRIM.
 func displayTags(tags []corim.Tag) {
 	for i, t := range tags {
-		if len(t) < 4 {
-			fmt.Printf(">> skipping malformed tag at index %d\n", i)
-			continue
-		}
-
-		// Split tag identifier from data
-		cborTag, cborData := t[:3], t[3:]
-
 		hdr := fmt.Sprintf(">> [ %d ]", i)
 
-		switch {
-		case bytes.Equal(cborTag, corim.ComidTag):
-			if err := printComid(cborData, hdr); err != nil {
+		switch t.Number {
+		case corim.ComidTag:
+			if err := printComid(t.Content, hdr); err != nil {
 				fmt.Printf(">> skipping malformed CoMID tag at index %d: %v\n", i, err)
 			}
-		case bytes.Equal(cborTag, corim.CoswidTag):
-			if err := printCoswid(cborData, hdr); err != nil {
+		case corim.CoswidTag:
+			if err := printCoswid(t.Content, hdr); err != nil {
 				fmt.Printf(">> skipping malformed CoSWID tag at index %d: %v\n", i, err)
 			}
-		case bytes.Equal(cborTag, cots.CotsTag):
-			if err := printCots(cborData, hdr); err != nil {
+		case cots.CotsTag:
+			if err := printCots(t.Content, hdr); err != nil {
 				fmt.Printf(">> skipping malformed CoTS tag at index %d: %v\n", i, err)
 			}
 		default:
-			fmt.Printf(">> unmatched CBOR tag: %x\n", cborTag)
+			fmt.Printf(">> unmatched CBOR tag: %d\n", t.Number)
 		}
 	}
 }
