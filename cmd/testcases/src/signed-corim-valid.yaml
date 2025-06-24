@@ -3,9 +3,9 @@ value:
   0: !!binary |-
     XFfo9EbNQhuRyQjPk+E8/A==
   1:
-  - encodedCBOR:
-        tag: 506
-        value:
+  - tag: 506
+    value:
+      encodedCBOR:
           0: en-GB
           1:
             0: !!binary |-

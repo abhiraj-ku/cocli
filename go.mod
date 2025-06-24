@@ -1,8 +1,6 @@
 module github.com/veraison/cocli
 
-go 1.22.0
-
-toolchain go1.22.10
+go 1.23.0
 
 require (
 	github.com/golang/mock v1.6.0
@@ -11,18 +9,19 @@ require (
 	github.com/spf13/cobra v1.2.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.9.0
-	github.com/stretchr/testify v1.9.0
+	github.com/stretchr/testify v1.10.0
 	github.com/veraison/apiclient v0.3.1-0.20240807160142-9141ad363e45
-	github.com/veraison/corim v1.1.3-0.20250616101349-bbd15112e18f
+	github.com/veraison/corim v1.1.3-0.20250619112130-f48404b84d34
 	github.com/veraison/go-cose v1.3.0
 	github.com/veraison/swid v1.1.1-0.20230911094910-8ffdd07a22ca
 )
 
 require (
+	fortio.org/safecast v1.0.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.2.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
-	github.com/fxamacker/cbor/v2 v2.5.0 // indirect
+	github.com/fxamacker/cbor/v2 v2.7.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
