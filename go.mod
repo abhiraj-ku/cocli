@@ -11,7 +11,7 @@ require (
 	github.com/spf13/viper v1.9.0
 	github.com/stretchr/testify v1.10.0
 	github.com/veraison/apiclient v0.3.1-0.20240807160142-9141ad363e45
-	github.com/veraison/corim v1.1.3-0.20250619112130-f48404b84d34
+	github.com/veraison/corim v1.1.3-0.20250709120018-e3379e6d507e
 	github.com/veraison/go-cose v1.3.0
 	github.com/veraison/swid v1.1.1-0.20230911094910-8ffdd07a22ca
 )
