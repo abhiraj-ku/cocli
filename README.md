@@ -27,6 +27,14 @@ To install the `cocli` command, do:
 ```
 $ go install github.com/veraison/cocli@latest
 ```
+
+> **NOTE:** to install a version of `cocli` that understands the old CoRIM wire format (up to draft-ietf-rats-corim-06), use the following: 
+> ```
+> $ go install github.com/veraison/cocli@v0.0.1-compat
+> ```
+> This is required in order to parse the CoRIM manifests that are currently being issued by NVIDIA and Solidigm.
+
+
 To configure auto-completion, use the `completion` subcommand. For example, if `bash` is your shell, you would do something like:
 ```
 $ cocli completion bash > ~/.bash_completion.d/cocli
