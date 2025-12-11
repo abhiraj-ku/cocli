@@ -1,4 +1,4 @@
-// Copyright 2021-2024 Contributors to the Veraison project.
+// Copyright 2021-2025 Contributors to the Veraison project.
 // SPDX-License-Identifier: Apache-2.0
 
 package cmd
@@ -10,6 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/veraison/corim/comid"
+	"github.com/veraison/corim/profiles/tdx"
 )
 
 func Test_ComidCreateCmd_unknown_argument(t *testing.T) {
@@ -125,4 +126,46 @@ func Test_ComidCreateCmd_template_from_dir_to_custom_dir(t *testing.T) {
 
 	_, err = fs.Stat(expectedFileName)
 	assert.NoError(t, err)
+}
+
+func Test_ComidCreateCmd_WithProfile(t *testing.T) {
+	var err error
+	profile := "--profile=" + testProfile
+	cmd := NewComidCreateCmd()
+	fs = afero.NewMemMapFs()
+	err = afero.WriteFile(fs, "ok.json", []byte(tdx.TDXSeamRefValJSONTemplate), 0644)
+	require.NoError(t, err)
+
+	args := []string{
+		"--template=ok.json",
+		profile,
+	}
+	cmd.SetArgs(args)
+
+	err = cmd.Execute()
+	assert.NoError(t, err)
+
+	expectedFileName := "ok.cbor"
+
+	_, err = fs.Stat(expectedFileName)
+	assert.NoError(t, err)
+
+}
+
+func Test_ComidCreateCmd_InvalidProfile(t *testing.T) {
+	var err error
+	profile := "--profile=" + testInvalidProfile
+	cmd := NewComidCreateCmd()
+	fs = afero.NewMemMapFs()
+	err = afero.WriteFile(fs, "ok.json", []byte(tdx.TDXSeamRefValJSONTemplate), 0644)
+	require.NoError(t, err)
+
+	args := []string{
+		"--template=ok.json",
+		profile,
+	}
+	cmd.SetArgs(args)
+
+	err = cmd.Execute()
+	assert.EqualError(t, err, "1/1 creations(s) failed")
 }

@@ -1,4 +1,4 @@
-// Copyright 2021-2024 Contributors to the Veraison project.
+// Copyright 2021-2025 Contributors to the Veraison project.
 // SPDX-License-Identifier: Apache-2.0
 
 package cmd
@@ -28,8 +28,10 @@ var (
 	testCorimInvalid = comid.MustHexDecode(nil,
 		"d901f5a100505c57e8f446cd421b91c908cf93e13cfc",
 	)
-	testMetaInvalid = []byte("{}")
-	testMetaValid   = []byte(`{
+	testProfile        = "2.16.840.1.113741.1.16.1"
+	testInvalidProfile = "example"
+	testMetaInvalid    = []byte("{}")
+	testMetaValid      = []byte(`{
 		"signer": {
 			"name": "ACME Ltd signing key",
 			"uri": "https://acme.example"
