@@ -1,4 +1,4 @@
-// Copyright 2021-2025 Contributors to the Veraison project.
+// Copyright 2021-2026 Contributors to the Veraison project.
 // SPDX-License-Identifier: Apache-2.0
 
 package cmd
@@ -36,7 +36,7 @@ func NewComidCreateCmd() *cobra.Command {
 		cocli comid create --template=t1.json \
 	    			--template=t2.json \
 	    			--template-dir=templates \
-                    --profile="tag:arm.com,2024:cca_platform#1.1.0"
+                    --profile="tag:arm.com,2025:cca_platform#1.0.0"
 	  
 	Create one CoMID from template t3.json and save it to the comids/ directory.
 	Note that the output directory must exist.

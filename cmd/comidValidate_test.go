@@ -1,4 +1,4 @@
-// Copyright 2021-2025 Contributors to the Veraison project.
+// Copyright 2021-2026 Contributors to the Veraison project.
 // SPDX-License-Identifier: Apache-2.0
 
 package cmd
@@ -10,6 +10,7 @@ import (
 	"github.com/spf13/afero"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	_ "github.com/veraison/corim/profiles/cca"
 	"github.com/veraison/corim/profiles/tdx"
 )
 
@@ -133,6 +134,44 @@ func Test_ComidValidateCmd_with_valid_comid(t *testing.T) {
 	cmd.SetArgs(args)
 
 	fmt.Printf("%x\n", []byte(tdx.ComidSeamRefVal))
+
+	err = cmd.Execute()
+	assert.NoError(t, err)
+}
+
+func Test_ComidValidateCmd_with_valid_cca_platform_comid(t *testing.T) {
+	var err error
+	profile := "--profile=tag:arm.com,2025:cca_platform#1.0.0"
+	cmd := NewComidValidateCmd()
+
+	fs = afero.NewMemMapFs()
+	err = afero.WriteFile(fs, "cca-platform.cbor", CCAPlatformRefValCBOR, 0644)
+	require.NoError(t, err)
+
+	args := []string{
+		"--file=cca-platform.cbor",
+		profile,
+	}
+	cmd.SetArgs(args)
+
+	err = cmd.Execute()
+	assert.NoError(t, err)
+}
+
+func Test_ComidValidateCmd_with_valid_cca_realm_comid(t *testing.T) {
+	var err error
+	profile := "--profile=tag:arm.com,2025:cca_realm#1.0.0"
+	cmd := NewComidValidateCmd()
+
+	fs = afero.NewMemMapFs()
+	err = afero.WriteFile(fs, "cca-realm.cbor", CCARealmRefValCBOR, 0644)
+	require.NoError(t, err)
+
+	args := []string{
+		"--file=cca-realm.cbor",
+		profile,
+	}
+	cmd.SetArgs(args)
 
 	err = cmd.Execute()
 	assert.NoError(t, err)

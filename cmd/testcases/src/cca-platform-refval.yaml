@@ -1,0 +1,47 @@
+# CCA Platform CoMID with Reference Values
+# - CCA Platform profile (tag:arm.com,2025:cca_platform#1.0.0)
+# - Valid Implementation ID (32 bytes, CBOR tag 560)
+# - One software component with digests and signer-id
+# - One platform-config measurement with raw-value and raw-value-mask
+---
+0: en-GB
+1:
+  0: !!binary |-
+    Q7vjfy5hSzOu01PP8UKLFg==
+2:
+  - 0: ACME Ltd.
+    1:
+      tag: 32
+      value: https://acme.example
+    2:
+      - 0
+      - 1
+      - 2
+4:
+  0:
+    - - 0:
+          0:
+            tag: 560
+            value: !!binary |-
+              YWNtZS1pbXBsZW1lbnRhdGlvbi1pZC0wMDAwMDAwMDE=
+          1: ACME
+          2: RoadRunner
+      - - 0: "cca.software-component"
+          1:
+            2:
+              - - 1
+                - !!binary |-
+                  h0KPxSKAPTEGXnvOPPA/5HUJZjHl4Hu9eg/eYMTPJcc=
+            11: BL
+            13:
+              - tag: 560
+                value: !!binary |-
+                  MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDE=
+        - 0: "cca.platform-config"
+          1:
+            4:
+              tag: 560
+              value: !!binary |-
+                cmF3dmFsdWUKcmF3dmFsdWUK
+            5: !!binary |-
+              cmF3dmFsdWUKcmF3dmFsdWUK
