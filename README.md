@@ -167,6 +167,22 @@ $ cocli comid create -T comid-templates/ \
 template file name, all the template files (when from different directories)
 MUST have different base names.
 
+For profile-specific CoMIDs (e.g., CCA platform or CCA realm), pass the profile
+URI using the `--profile` (abbrev. `-p`) switch:
+```
+$ cocli comid create \
+    --template data/comid/templates/comid-cca-refval.json \
+    --profile "tag:arm.com,2025:cca_platform#1.0.0"
+>> created "comid-cca-refval.cbor" from "comid-cca-refval.json"
+```
+```
+$ cocli comid create \
+    --template data/comid/templates/comid-cca-realm-refval.json \
+    --profile "tag:arm.com,2025:cca_realm#1.0.0"
+>> created "comid-cca-realm-refval.cbor" from "comid-cca-realm-refval.json"
+```
+The supplied profile URI is applied to all templates in that invocation.
+
 
 ### Display
 

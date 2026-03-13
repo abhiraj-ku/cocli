@@ -13,8 +13,8 @@ fi
 
 testcases=(
 	psa-refval
-	test-comid
-	test-coswid
+        cca-platform-refval
+        cca-realm-refval
 	test-cots
 )
 

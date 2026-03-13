@@ -9,6 +9,7 @@ import (
 	"github.com/spf13/afero"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	_ "github.com/veraison/corim/profiles/cca"
 	"github.com/veraison/corim/profiles/tdx"
 )
 
@@ -167,4 +168,46 @@ func Test_ComidCreateCmd_InvalidProfile(t *testing.T) {
 
 	err = cmd.Execute()
 	assert.EqualError(t, err, "1/1 creations(s) failed")
+}
+
+func Test_ComidCreateCmd_WithCCAPlatformProfile(t *testing.T) {
+	var err error
+	profile := "--profile=tag:arm.com,2025:cca_platform#1.0.0"
+	cmd := NewComidCreateCmd()
+	fs = afero.NewMemMapFs()
+	err = afero.WriteFile(fs, "cca-platform.json", CCAPlatformRefValTemplate, 0644)
+	require.NoError(t, err)
+
+	args := []string{
+		"--template=cca-platform.json",
+		profile,
+	}
+	cmd.SetArgs(args)
+
+	err = cmd.Execute()
+	assert.NoError(t, err)
+
+	_, err = fs.Stat("cca-platform.cbor")
+	assert.NoError(t, err)
+}
+
+func Test_ComidCreateCmd_WithCCARealmProfile(t *testing.T) {
+	var err error
+	profile := "--profile=tag:arm.com,2025:cca_realm#1.0.0"
+	cmd := NewComidCreateCmd()
+	fs = afero.NewMemMapFs()
+	err = afero.WriteFile(fs, "cca-realm.json", CCARealmRefValTemplate, 0644)
+	require.NoError(t, err)
+
+	args := []string{
+		"--template=cca-realm.json",
+		profile,
+	}
+	cmd.SetArgs(args)
+
+	err = cmd.Execute()
+	assert.NoError(t, err)
+
+	_, err = fs.Stat("cca-realm.cbor")
+	assert.NoError(t, err)
 }

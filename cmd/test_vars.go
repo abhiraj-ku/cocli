@@ -66,6 +66,12 @@ var (
 	//go:embed testcases/psa-refval.cbor
 	PSARefValCBOR []byte
 
+	//go:embed testcases/cca-platform-refval.cbor
+	CCAPlatformRefValCBOR []byte
+
+	//go:embed testcases/cca-realm-refval.cbor
+	CCARealmRefValCBOR []byte
+
 	//go:embed testcases/test-comid.cbor
 	testComid []byte
 
@@ -74,4 +80,11 @@ var (
 
 	//go:embed testcases/test-cots.cbor
 	testCots []byte
+
+	//go:embed testcases/cca-platform-refval.json
+	CCAPlatformRefValTemplate []byte
+
+	//go:embed testcases/cca-realm-refval.json
+	CCARealmRefValTemplate []byte
 )
+

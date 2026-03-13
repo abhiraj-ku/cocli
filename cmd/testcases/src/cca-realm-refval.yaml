@@ -1,0 +1,64 @@
+# CCA Realm CoMID with Reference Values
+# - CCA Realm profile (tag:arm.com,2025:cca_realm#1.0.0)
+# - Valid RIM as class identifier (32 bytes, CBOR tag 560)
+# - RIM measurement (digest)
+# - REM[0]-REM[3] measurements (digests)
+# - RPV measurement (raw-value tagged bytes)
+---
+0: en-GB
+1:
+  0: !!binary |-
+    Q7vjfy5hSzOu01PP8UKLFh==
+2:
+  - 0: Workload Client Ltd.
+    1:
+      tag: 32
+      value: https://workloadclient.example
+    2:
+      - 0
+      - 1
+      - 2
+4:
+  0:
+    - - 0:
+          0:
+            tag: 560
+            value: !!binary |-
+              YWNtZS1yZWFsbS1pbml0aWFsLW1lYXN1cmVtZW50LTA=
+          1: Workload Client Ltd
+      - - 0: "cca.rim"
+          1:
+            2:
+              - - 1
+                - !!binary |-
+                  YWNtZS1yZWFsbS1pbml0aWFsLW1lYXN1cmVtZW50LTA=
+        - 0: "cca.rem0"
+          1:
+            2:
+              - - 1
+                - !!binary |-
+                  IQe752H8pS2VE2oTVNt6TdV7Gya+DT2nHZ6yOYazS6Y=
+        - 0: "cca.rem1"
+          1:
+            2:
+              - - 1
+                - !!binary |-
+                  JQe752H8pS2VE2oTVNt6TdV7Gya+DT2nHZ6yOYazS6Y=
+        - 0: "cca.rem2"
+          1:
+            2:
+              - - 1
+                - !!binary |-
+                  MQe752H8pS2VE2oTVNt6TdV7Gya+DT2nHZ6yOYazS6Y=
+        - 0: "cca.rem3"
+          1:
+            2:
+              - - 1
+                - !!binary |-
+                  NQe752H8pS2VE2oTVNt6TdV7Gya+DT2nHZ6yOYazS6Y=
+        - 0: "cca.rpv"
+          1:
+            4:
+              tag: 560
+              value: !!binary |-
+                VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIDEzIGxhenkgZG9ncy4=
